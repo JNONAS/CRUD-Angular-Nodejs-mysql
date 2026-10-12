@@ -1,0 +1,110 @@
+
+.pagina {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 30px;
+  font-family: Arial, sans-serif;
+  color: #222;
+}
+
+header {
+  margin-bottom: 30px;
+}
+
+header p {
+  color: #666;
+}
+
+.formulario {
+  max-width: 450px;
+  margin-bottom: 35px;
+  padding: 25px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label {
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 14px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 5px;
+  background: #4053c7;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #3042a0;
+}
+
+.lista {
+  margin-top: 30px;
+}
+
+.grade-produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.card-produto {
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.card-produto h3 {
+  margin-top: 0;
+}
+
+.card-produto p {
+  color: #555;
+}
+
+.botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.botao-excluir {
+  background: #c62828;
+}
+
+.botao-excluir:hover {
+  background: #a51d1d;
+}
+
+.botao-cancelar {
+  background: #666;
+}
+
+.mensagem {
+  padding: 10px;
+  border-radius: 5px;
+  background: #f0f0f0;
+}

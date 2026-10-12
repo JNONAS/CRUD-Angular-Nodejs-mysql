@@ -1,0 +1,174 @@
+
+<div class="pagina">
+
+  <header>
+    <h1>Meus produtos</h1>
+    <p>Gerencie seus produtos cadastrados.</p>
+  </header>
+
+  <!-- FORMULÁRIO DE CADASTRO -->
+  <section class="formulario">
+    <h2>Cadastrar produto</h2>
+
+    <form (ngSubmit)="cadastrarProduto()">
+
+      <label for="nomeNovo">Nome do produto</label>
+      <input
+        id="nomeNovo"
+        type="text"
+        name="nomeNovo"
+        [(ngModel)]="nomeNovo"
+        placeholder="Ex.: Camisa do Bahia"
+        required
+      />
+
+      <label for="precoNovo">Preço (R$)</label>
+      <input
+        id="precoNovo"
+        type="number"
+        name="precoNovo"
+        [(ngModel)]="precoNovo"
+        placeholder="Ex.: 99.90"
+        min="0"
+        step="0.01"
+        required
+      />
+
+      <label for="estoqueNovo">Quantidade em estoque</label>
+      <input
+        id="estoqueNovo"
+        type="number"
+        name="estoqueNovo"
+        [(ngModel)]="estoqueNovo"
+        placeholder="Ex.: 10"
+        min="0"
+        step="1"
+        required
+      />
+
+      <button type="submit">Cadastrar produto</button>
+
+    </form>
+  </section>
+
+  <!-- MENSAGEM DE SUCESSO OU ERRO -->
+  @if (mensagem) {
+    <p class="mensagem">{{ mensagem }}</p>
+  }
+
+  <!-- LISTA DE PRODUTOS -->
+  <section class="lista">
+    <h2>Produtos cadastrados ({{ produtos.length }})</h2>
+
+    @if (produtos.length === 0) {
+      <p>Nenhum produto cadastrado.</p>
+    }
+
+    <div class="grade-produtos">
+
+      @for (produto of produtos; track produto.id) {
+
+        <article class="card-produto">
+
+          @if (produtoEditandoId !== produto.id) {
+
+            <h3>{{ produto.nome }}</h3>
+
+            <p>
+              <strong>Preço:</strong>
+              R$ {{ produto.preco }}
+            </p>
+
+            <p>
+              <strong>Estoque:</strong>
+              {{ produto.estoque }} unidades
+            </p>
+
+            <div class="botoes">
+              <button
+                type="button"
+                (click)="iniciarEdicao(produto)"
+              >
+                Editar
+              </button>
+
+              <button
+                type="button"
+                class="botao-excluir"
+                (click)="excluirProduto(produto.id)"
+              >
+                Excluir
+              </button>
+            </div>
+
+          } @else {
+
+            <!-- FORMULÁRIO DE EDIÇÃO -->
+            <h3>Editar produto</h3>
+
+            <form (ngSubmit)="salvarEdicao()">
+
+              <label [for]="'nomeEditado' + produto.id">
+                Nome
+              </label>
+
+              <input
+                [id]="'nomeEditado' + produto.id"
+                type="text"
+                name="nomeEditado"
+                [(ngModel)]="nomeEditado"
+                required
+              />
+
+              <label [for]="'precoEditado' + produto.id">
+                Preço (R$)
+              </label>
+
+              <input
+                [id]="'precoEditado' + produto.id"
+                type="number"
+                name="precoEditado"
+                [(ngModel)]="precoEditado"
+                min="0"
+                step="0.01"
+                required
+              />
+
+              <label [for]="'estoqueEditado' + produto.id">
+                Estoque
+              </label>
+
+              <input
+                [id]="'estoqueEditado' + produto.id"
+                type="number"
+                name="estoqueEditado"
+                [(ngModel)]="estoqueEditado"
+                min="0"
+                step="1"
+                required
+              />
+
+              <div class="botoes">
+                <button type="submit">Salvar</button>
+
+                <button
+                  type="button"
+                  class="botao-cancelar"
+                  (click)="cancelarEdicao()"
+                >
+                  Cancelar
+                </button>
+              </div>
+
+            </form>
+
+          }
+
+        </article>
+
+      }
+
+    </div>
+  </section>
+
+</div>

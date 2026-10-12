@@ -1,0 +1,21 @@
+# Dependências
+node_modules/
+
+# Arquivos gerados
+dist/
+.angular/
+coverage/
+
+# Credenciais
+.env
+.env.*
+!.env.example
+
+# Logs e temporários
+*.log
+*.bak
+*.tmp
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
